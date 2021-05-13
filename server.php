@@ -1,5 +1,5 @@
 <?php
-  $link = $_POST['id'];
+  $link = $_GET['id'];
   $url = "https://www.breakingbadapi.com/api/quote?author=";
   $author = "Jesse+Pinkman";
   if($link=="Jesse"){
