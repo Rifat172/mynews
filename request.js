@@ -1,31 +1,19 @@
 $(document).ready(function(){
   $('#Jesse').on('click', function(e){
     console.log("кнопка нажата");
-    const btn = $.urlParam('btn');
-    console.log(btn);
-    ajaxAndPrint("Jesse", btn);
+    ajaxAndPrint("Jesse");
   });
 
   $('#Walter').on('click', function(e){
     console.log("кнопка нажата");
-    ajaxAndPrint("Walter", btn);
+    ajaxAndPrint("Walter");
   });
 
   $('#Skyler').on('click', function(e){
-    ajaxAndPrint("Skyler", btn);
+    ajaxAndPrint("Skyler");
   });
 
-  $.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return decodeURI(results[1]) || 0;
-    }
-}
-
-  function ajaxAndPrint(id, btn)
+  function ajaxAndPrint(id)
   {
     $.ajax({
       url: "server.php",
@@ -40,7 +28,6 @@ $(document).ready(function(){
         let countOfPages = Math.floor(array.length / divInPage);
         let restDiv = array.length - countOfPages * divInPage;
         let newsteg = document.getElementById("news");
-        btn = Number(btn);
         newsteg.innerHTML = "";
 
         if(restDiv!=0){
@@ -52,7 +39,7 @@ $(document).ready(function(){
         }
         else{
           console.log(countOfPages);
-          clickButton(btn, divInPage, countOfPages, array, newsteg);
+          clickButton(1, divInPage, countOfPages, array, newsteg);
           // print(0, divInPage, array, newsteg);
           // printButton(btn, divInPage, countOfPages, array, newsteg);
         }
